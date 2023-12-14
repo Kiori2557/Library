@@ -1,0 +1,13 @@
+.display {
+  display: flex;
+}
+.display > * {
+  background-color: beige;
+  margin: 5px;
+}
+.newBookForm {
+  visibility: hidden;
+}
+.visible {
+  visibility: visible;
+}
