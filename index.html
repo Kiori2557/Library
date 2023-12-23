@@ -8,19 +8,56 @@
     <script src="main.js" defer></script>
   </head>
   <body>
-    <h1>Hello World</h1>
-    <div class="display"></div>
-    <button class="addBook">+ new book</button>
-    <form action="" class="newBookForm">
-      <label for="author">Author Name:</label>
-      <input type="text" placeholder="Brandon Sanderson..." id="author" />
-      <label for="book">Book Name:</label>
-      <input type="text" placeholder="Harry Potter..." id="book" />
-      <label for="pageNumber">Page Number:</label>
-      <input type="number" placeholder="" id="pageNumber" />
-      <label for="hasRead">I have already read it</label>
-      <input type="checkbox" name="hasRead" value="true" id="hasRead" />
-      <button class="confirm">Confirm</button>
-    </form>
+    <button class="addBook">+</button>
+    <div class="header">
+      <h1>Your Private Library</h1>
+    </div>
+    <div class="container">
+      <div class="main">
+        <div class="display"></div>
+      </div>
+      <div class="side">
+        <div class="dialogContainer">
+          <dialog>
+            <form action="" class="">
+              <div class="inputItem">
+                <label for="author">Author Name:</label>
+                <input
+                  type="text"
+                  placeholder="Brandon Sanderson..."
+                  id="author"
+                  required
+                />
+              </div>
+              <button class="closeForm">x</button>
+              <div class="inputItem">
+                <label for="book">Book Name:</label>
+                <input
+                  type="text"
+                  placeholder="Harry Potter..."
+                  id="book"
+                  required
+                />
+              </div>
+              <div class="inputItem">
+                <label for="pageNumber">Page Number:</label>
+                <input type="number" placeholder="" id="pageNumber" required />
+              </div>
+              <div class="inputItem">
+                <input
+                  type="checkbox"
+                  name="hasRead"
+                  value="true"
+                  id="hasRead"
+                />
+                <label for="hasRead" required>I have already read it</label>
+              </div>
+              <button class="confirm" formmethod="dialog">Confirm</button>
+            </form>
+          </dialog>
+        </div>
+      </div>
+    </div>
+    <div class="footer">this is footer</div>
   </body>
 </html>

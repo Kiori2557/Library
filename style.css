@@ -1,13 +1,112 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
 .display {
   display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
 }
-.display > * {
+.card {
   background-color: beige;
-  margin: 5px;
+  width: 200px;
+  height: 200px;
+  padding: 15px 10px;
+  outline: 10px inset rgb(7, 84, 54);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
-.newBookForm {
-  visibility: hidden;
+
+.card:hover {
+  outline: 12px inset rgb(7, 84, 54);
 }
+
 .visible {
   visibility: visible;
+}
+
+.header,
+.container,
+.main,
+.side,
+.footer {
+  border: 1px solid black;
+}
+
+.header {
+  height: 100px;
+}
+.footer {
+  height: 100px;
+}
+
+.main {
+  flex-grow: 1;
+  padding: 20px 20px;
+}
+.container {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.dialogContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+dialog::backdrop {
+  background-color: rgb(0, 0, 0);
+  opacity: 0.75;
+}
+form {
+  position: relative;
+  padding: 1rem;
+}
+.closeForm {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  padding: 0;
+  font-size: 10px;
+  font-weight: 700;
+  color: rgb(136, 0, 0);
+  border: 1px rgb(136, 0, 0) solid;
+}
+dialog {
+  padding: 0;
+  position: absolute;
+  top: 25%;
+  left: 40%;
+  height: 500px;
+  width: 350px;
+}
+.addBook {
+  position: absolute;
+  bottom: 150px;
+  right: 100px;
+  height: 90px;
+  text-align: center;
+  box-sizing: content-box;
+  width: 90px;
+  padding: 0;
+  border-radius: 50%;
+  color: wheat;
+  background-image: radial-gradient(rgb(4, 159, 131), rgb(7, 84, 54));
+  font-size: 70px;
+  border: none;
+}
+.addBook:hover {
+  background-image: radial-gradient(rgb(7, 84, 54), rgb(4, 159, 131));
 }
