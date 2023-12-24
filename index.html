@@ -10,7 +10,7 @@
   <body>
     <button class="addBook">+</button>
     <div class="header">
-      <h1>Your Private Library</h1>
+      <h1>Library</h1>
     </div>
     <div class="container">
       <div class="main">
@@ -19,31 +19,37 @@
       <div class="side">
         <div class="dialogContainer">
           <dialog>
-            <form action="" class="">
+            <form action="" id="bookForm">
+              <h3>Book Detail</h3>
               <div class="inputItem">
-                <label for="author">Author Name:</label>
+                <label for="author">Author Name :</label>
                 <input
                   type="text"
-                  placeholder="Brandon Sanderson..."
+                  placeholder="author..."
                   id="author"
                   required
                 />
               </div>
               <button class="closeForm">x</button>
               <div class="inputItem">
-                <label for="book">Book Name:</label>
+                <label for="book">Book Name :</label>
                 <input
                   type="text"
-                  placeholder="Harry Potter..."
+                  placeholder="book name..."
                   id="book"
                   required
                 />
               </div>
               <div class="inputItem">
-                <label for="pageNumber">Page Number:</label>
-                <input type="number" placeholder="" id="pageNumber" required />
+                <label for="pageNumber">Page Number :</label>
+                <input
+                  type="number"
+                  placeholder="page number..."
+                  id="pageNumber"
+                  required
+                />
               </div>
-              <div class="inputItem">
+              <div class="inputItemCheckBox">
                 <input
                   type="checkbox"
                   name="hasRead"
@@ -52,12 +58,22 @@
                 />
                 <label for="hasRead" required>I have already read it</label>
               </div>
-              <button class="confirm" formmethod="dialog">Confirm</button>
+              <button type="submit" class="confirm" formmethod="dialog">
+                ~CONFIRM~
+              </button>
             </form>
           </dialog>
         </div>
       </div>
     </div>
-    <div class="footer">this is footer</div>
+    <div class="footer">
+      <span>
+        Copyright &copy;
+        <script>
+          document.write(new Date().getFullYear());
+        </script>
+        Kiori2557</span
+      >
+    </div>
   </body>
 </html>

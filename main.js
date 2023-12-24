@@ -4,6 +4,7 @@ const form = document.querySelector(".newBookForm");
 const confirmBtn = document.querySelector(".confirm");
 const dialog = document.querySelector("dialog");
 const closeFormBtn = document.querySelector(".closeForm");
+const bookForm = document.querySelector("#bookForm");
 
 closeFormBtn.addEventListener("click", function (e) {
   e.preventDefault();
@@ -31,34 +32,32 @@ function addDisplay(item) {
     status = "Not Read Yet";
   }
   let index = myLibrary.indexOf(item);
-  console.log(index);
+
   display.innerHTML += `<div class='card'>
             <p>Author:  ${item.author}</p>
             <p>Title:  ${item.title}</p>
             <p>Page:  ${item.pageNumber} pages</p>
             <p>Status:  ${status}</p>
-            <button data-index = '${index}' >Remove</button>
+            <button data-status = '${index}'> Read</button>
+            <button data-remove = '${index}' >Remove</button>
         </div>`;
   removeBook();
+  changeReadStatus();
 }
 
-newBook.addEventListener("click", () => dialog.showModal());
+newBook.addEventListener("click", () => {
+  bookForm.reset();
+  dialog.showModal();
+});
 myLibrary.forEach((item) => addDisplay(item));
 
 confirmBtn.addEventListener("click", function (e) {
-  e.preventDefault();
   const author = document.querySelector("#author").value;
   const title = document.querySelector("#book").value;
   const pageNumber = document.querySelector("#pageNumber").value;
-  const hasRead = document.querySelector("#hasRead");
+  const hasRead = document.querySelector("#hasRead").checked;
   if (!author || !title || !pageNumber) return;
-  let read;
-  if (hasRead.checked) {
-    read = true;
-  } else {
-    read = false;
-  }
-  const newBook = new Book(author, title, pageNumber, read);
+  const newBook = new Book(author, title, pageNumber, hasRead);
   myLibrary.push(newBook);
   display.innerHTML = "";
   myLibrary.forEach((item) => addDisplay(item));
@@ -66,11 +65,22 @@ confirmBtn.addEventListener("click", function (e) {
 });
 // Remove Book
 function removeBook() {
-  let removeBtns = document.querySelectorAll("[data-index]");
+  let removeBtns = document.querySelectorAll("[data-remove]");
   removeBtns.forEach((removeBtn) => {
     removeBtn.addEventListener("click", function () {
-      let key = removeBtn.getAttribute("data-index");
+      let key = removeBtn.getAttribute("data-remove");
       myLibrary.splice(key, 1);
+      display.innerHTML = "";
+      myLibrary.forEach((item) => addDisplay(item));
+    });
+  });
+}
+function changeReadStatus() {
+  let readBtns = document.querySelectorAll("[data-status]");
+  readBtns.forEach((readBtn) => {
+    readBtn.addEventListener("click", function () {
+      let key = readBtn.getAttribute("data-status");
+      myLibrary[key].hasRead = !myLibrary[key].hasRead;
       display.innerHTML = "";
       myLibrary.forEach((item) => addDisplay(item));
     });
