@@ -44,16 +44,28 @@ newBook.addEventListener("click", () => {
   dialog.showModal();
 });
 
-confirmBtn.addEventListener("click", function () {
-  const author = document.querySelector("#author").value;
+confirmBtn.addEventListener("click", function (e) {
+  const authorInput = document.querySelector("#author");
+  const author = authorInput.value;
   const title = document.querySelector("#book").value;
-  const pageNumber = document.querySelector("#pageNumber").value;
+  const pageNumberInput = document.querySelector("#pageNumber");
+  const pageNumber = pageNumberInput.value;
   const hasRead = document.querySelector("#hasRead").checked;
+
   if (!author || !title || !pageNumber) return;
-  const newBook = new Book(author, title, pageNumber, hasRead);
-  myLibrary.push(newBook);
-  newBook.addDisplay();
-  dialog.close();
+  if (authorInput.validity.tooShort) {
+    authorInput.setCustomValidity("author name should be at least 2 words");
+  }
+  if (pageNumberInput.validity.rangeUnderflow) {
+    pageNumberInput.setCustomValidity("book should be at least 10 pages thick");
+  }
+  if (bookForm.checkValidity()) {
+    const newBook = new Book(author, title, pageNumber, hasRead);
+    myLibrary.push(newBook);
+    newBook.addDisplay();
+    dialog.close();
+  }
+  console.log(authorInput.validity.tooShort);
 });
 // Remove Book
 function removeBook() {
